@@ -35,7 +35,6 @@ function onImageClick(event) {
   instance.show();
 }
 
-//  Part for Version 02:
 function onClose(event, instance) {
   if (event.code === 'Escape') {
     instance.close();
