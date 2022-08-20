@@ -17,7 +17,17 @@ galleryRef.addEventListener('click', onImageClick);
 
 // -----------------------------------------------------------------------------------------------------------------
 //  Version 03
-const instance = basicLightbox.create(`<div id="content"></div>`, {
+// const instance = basicLightbox.create(`<div id="content"></div>`, {
+//   onShow: instance => {
+//     document.onkeyup = event => {
+//       onClose(event, instance);
+//     };
+//   },
+//   onClose: () => (document.onkeyup = null),
+// });
+// -----------------------------------------------------------------------------------------------------------------
+
+const instance = basicLightbox.create(`<img id="content" src='' width="800" height="600">`, {
   onShow: instance => {
     document.onkeyup = event => {
       onClose(event, instance);
@@ -25,7 +35,15 @@ const instance = basicLightbox.create(`<div id="content"></div>`, {
   },
   onClose: () => (document.onkeyup = null),
 });
-// -----------------------------------------------------------------------------------------------------------------
+
+// const instance = basicLightbox.create(galleryRef.querySelector('img'), {
+//     onShow: instance => {
+//       document.onkeyup = event => {
+//         onClose(event, instance);
+//       };
+//     },
+//     onClose: () => (document.onkeyup = null),
+//   });
 
 function onImageClick(event) {
   event.preventDefault();
@@ -47,13 +65,16 @@ function onImageClick(event) {
   //   }
   // );
 
+  instance.element().querySelector('img').src = event.target.dataset.source;
+
   instance.show();
+
   // -----------------------------------------------------------------------------------------------------------------
 
   // -----------------------------------------------------------------------------------------------------------------
   //  Version 03
-  const modalContent = document.querySelector('#content');
-  modalContent.innerHTML = `<img src=${event.target.dataset.source} width="800" height="600">`;
+  // const modalContent = document.querySelector('#content');
+  // modalContent.innerHTML = `<img src=${event.target.dataset.source} width="800" height="600">`;
   // -----------------------------------------------------------------------------------------------------------------
 
   // -----------------------------------------------------------------------------------------------------------------
